@@ -10,18 +10,17 @@ public class Room { //could have class that inherits if lets say the summary of 
 	private String[] hotelType;
 	private PriceInformation priceInfo;
 	
-	//'wifi', 'restaurant', 'parking', 'non-smoking', 'pets', 'tv', 'laundry', 'conditioning', 'internet', 'pool', 'fitness'
-	private String[] facilitiesShort; //include with other aminities and facilities
+	private String[] facilitiesShort; 
 	private Node facilitiesExtendedList; 
 	
-	
-	//facilities from different request + include location? + calculate distance from seminar location using longitude/latitude? 
-	
+	private LocationCoordinates coordinates;
+	private String address; 
+		
 	public Room() {
 
 	}
 	
-	public Room(int hotelID, double distanceFromCityCenter, String nameOfHotel, int stars, int visitorRating, String summary, String propertyType, String[] hotelType, PriceInformation priceInfo, String[] facilitiesShort, Node facilitiesExtendedList) { 
+	public Room(int hotelID, double distanceFromCityCenter, String nameOfHotel, int stars, int visitorRating, String summary, String propertyType, String[] hotelType, PriceInformation priceInfo, String[] facilitiesShort, Node facilitiesExtendedList, LocationCoordinates coordinates, String address) { 
 		
 		this.hotelID = hotelID;
 		this.distanceFromCityCenter = distanceFromCityCenter;
@@ -34,6 +33,8 @@ public class Room { //could have class that inherits if lets say the summary of 
 		this.priceInfo = priceInfo;
 		this.facilitiesShort = facilitiesShort;
 		this.facilitiesExtendedList = facilitiesExtendedList;
+		this.coordinates = coordinates;
+		this.address = address;
 		
 		}
 		
@@ -52,6 +53,8 @@ public class Room { //could have class that inherits if lets say the summary of 
 	public PriceInformation getPriceInfo() { return priceInfo; }
 	public String[] getFacilitiesShort() { return facilitiesShort; }
 	public Node getFacilitiesExtendedList() { return facilitiesExtendedList; }
+	public LocationCoordinates getCoordinates() { return coordinates; }
+	public String getAddress() { return address; }
 	
 	//Mutators
 	public void setHotelID(int hotelID) { this.hotelID = hotelID; }
@@ -65,10 +68,12 @@ public class Room { //could have class that inherits if lets say the summary of 
 	public void setPriceInfo(PriceInformation priceInfo) { this.priceInfo = priceInfo;}
 	public void setFacilitiesShort(String[] facilities) { this.facilitiesShort = facilitiesShort; }
 	public void setFacilitiesExtendedList(Node facilitiesExtendedList) { this.facilitiesExtendedList = facilitiesExtendedList; }
+	public void setCoordinates(LocationCoordinates coordinates) { this.coordinates = coordinates; }
+	public void setAddress(String address) { this.address = address; }
 	
 	/**************************/
 	public String printAll() {
-		return("Hotel ID: " + this.hotelID + 
+		return("Hotel ID: " + this.hotelID  + 
 		", Hotel Name: " + this.nameOfHotel + 
 		", Distance from City Center: " + Double.toString(this.distanceFromCityCenter) + 
 		", Stars: " + Integer.toString(this.stars) +
@@ -78,7 +83,9 @@ public class Room { //could have class that inherits if lets say the summary of 
 		", Hotel Type: " + this.printHotelTypeArray() + 
 		", Price Info: " + this.priceInfo.printPriceInformation() +
 		", Short Facilities: " + this.printFacilitiesShort() +
-		", All Amenities: " + this.printFacilitiesExtendedList()	
+		", All Amenities: " + this.printFacilitiesExtendedList() +
+		", Address: " + this.address +
+		", Coordinates; Longitude: " + Double.toString(this.coordinates.longitude) + ", Latidue: " + Double.toString(this.coordinates.latitude)
 		);
 		
 		
@@ -105,15 +112,14 @@ public class Room { //could have class that inherits if lets say the summary of 
 	public String printFacilitiesExtendedList() {
 		String returnedString = "";
 		Node rootNode = this.facilitiesExtendedList;
-		
-		while(rootNode.next != null) {
-			rootNode = rootNode.next;	
-			returnedString = returnedString + ", " + rootNode.data;	
-		}
-		
-		
+		while(rootNode != null) {
+			returnedString = returnedString + ", " + rootNode.data;
+			rootNode = rootNode.next;		
+		}	
 		return returnedString;
 	}	
+	
+
 	
 	
 
