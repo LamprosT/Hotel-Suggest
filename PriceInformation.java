@@ -2,6 +2,7 @@ public class PriceInformation {
 	private int totalPrice;
 	private int numberOfNights;
 	private int pricePerNight; 
+	
 	public PriceInformation() {
 		
 	}
