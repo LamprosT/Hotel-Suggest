@@ -1,0 +1,4 @@
+3
+SynPoliteia,37.959613,23.719280
+Nea Psifiaka Mesa,37.941362,23.693716
+Politistiki Psifiaki Klironomia,38.913190,22.427306
