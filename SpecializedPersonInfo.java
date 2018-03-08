@@ -1,4 +1,11 @@
-public class SpecializedPersonInfo extends BasicPersonInfo { //what is *implements*, 
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package hotelmanagement_beanswork;
+
+public class SpecializedPersonInfo extends BasicPersonInfo {  
 	private String firstName;
 	private String lastName;
 	private int age;
@@ -15,7 +22,7 @@ public class SpecializedPersonInfo extends BasicPersonInfo { //what is *implemen
 		this.lastName = lastName;
 		this.age = age;
 		this.email = email;
-		this.phoneNumber = email;
+		this.phoneNumber = phoneNumber;
 	}
 	
 	/**************************/
